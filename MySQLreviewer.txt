@@ -235,4 +235,104 @@ insert into transactions (amount)
 values (4.99),
 (2.99);
 
+=== JOINS (INNER, LEFT, RIGHT) combine rows for 2 or more tables based on related column between them | linke a venn diagram
+
+-INNER
+select * 
+from transactions INNER join customers
+on transactions.customer_id = customers.customer_id;
+     table      foreign key    table     primary key  //based on what they have in common | joining by customer_id
+
+
+-LEFT
+select *
+from transactions LEFT join customers
+on transactions.customer_id = customers.customer_id; //display everything from table on the left
+
+
+-RIGHT
+select *
+from transactions RIGHT join customers
+on transactions.customer_id = customers.customer_id; //displays the entire table on the right/pull any matching rows on the left
+
+
+=== FUNCTIONS in MySQL
+
+-count how many transactions took place on a certain date
+COUNT function
+
+select COUNT(amount) AS "today's transactions"
+from transactions;
+
+MAX MIN AVG function
+select MAX(amount) AS maximum_amount
+from transactions;
+select MIN(amount) AS minimum_amount
+from transactions;
+select AVG(amount) AS avg_amount
+from transactions;
+
+SUM function
+select SUM(amount) AS sum
+from transactions;
+
+CONCAT function
+select CONCAT(first_name," ",last_name) AS full_name
+from trasactions;
+
+
+=== LOGICAL OPERATORS
+
+alter table employees
+add column job varchar(25) after hourly_pay;
+select * from employees;
+
+update employees
+set job = "manager"
+where employee_id = 1;
+
+select * from employees where not job = "manager";
+
+=
+<
+>
+>=
+<=
+!=
+or
+and
+not
+between
+in
+
+=== WILD CARDS % _ | used to substitute 1 or more characters in a string
+
+select * from employees
+where hire_date LIKE "%2023"; //LIKE instead of =
+
+
+select * from employees
+where job LIKE "_raphic"; //replace _ with a random character
+
+
+=== ORDER BY
+
+select * from employees
+order by last_name; // ascending order by default | asc
+
+select * from employees
+order by last_name desc; // descending order by default | desc
+
+select * from employees
+order by hire_date desc, salary asc;
+
 ===
+
+
+
+
+
+
+
+
+
